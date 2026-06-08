@@ -1,0 +1,1204 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>AURORA HOUSE | Luxury Restaurant & Boutique Stay</title>
+  <meta name="description" content="A premium responsive restaurant and boutique hotel website with luxury entrance, rooms, menu, gallery, reservations and WhatsApp booking." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#080705;
+      --bg2:#12100c;
+      --card:#19150f;
+      --cream:#fff7e8;
+      --soft:#d8c6a5;
+      --muted:#a99b82;
+      --gold:#d6a84f;
+      --gold2:#f5d98b;
+      --bronze:#8c5b2e;
+      --rose:#b84d38;
+      --green:#6d8064;
+      --line:rgba(255,255,255,.14);
+      --glass:rgba(255,255,255,.075);
+      --shadow:0 28px 90px rgba(0,0,0,.48);
+      --radius:28px;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:"Inter",system-ui,sans-serif;
+      color:var(--cream);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(214,168,79,.18), transparent 32%),
+        radial-gradient(circle at 88% 12%, rgba(184,77,56,.14), transparent 30%),
+        radial-gradient(circle at 45% 92%, rgba(109,128,100,.12), transparent 32%),
+        linear-gradient(135deg,#050403,#11100c 42%,#090806);
+      overflow-x:hidden;
+    }
+
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
+    section{padding:94px 6%}
+    h1,h2,h3{font-family:"Playfair Display",serif;line-height:1.02}
+    p{color:var(--muted);line-height:1.75}
+
+    /* =========================
+       IMAGE GUIDE
+       Put your own images inside:
+       images/entrance.jpg
+       images/hero-food.jpg
+       images/room.jpg
+       images/interior.jpg
+       images/chef.jpg
+       images/food-1.jpg
+       images/food-2.jpg
+       images/food-3.jpg
+       images/gallery-1.jpg
+       images/gallery-2.jpg
+       images/gallery-3.jpg
+       images/gallery-4.jpg
+
+       Then replace online image URLs below with:
+       src="images/entrance.jpg"
+       ========================= */
+
+    .site-header{
+      position:fixed;
+      top:18px;
+      left:50%;
+      transform:translateX(-50%);
+      width:min(1180px,92%);
+      z-index:999;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 16px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(8,7,5,.72);
+      backdrop-filter:blur(20px);
+      box-shadow:0 20px 70px rgba(0,0,0,.36);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+      letter-spacing:.08em;
+      white-space:nowrap;
+    }
+
+    .brand-mark{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,var(--gold2),var(--gold),var(--bronze));
+      color:#120b04;
+      font-family:"Playfair Display",serif;
+      font-size:24px;
+      box-shadow:0 14px 35px rgba(214,168,79,.32);
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:4px;
+    }
+
+    .nav-links a{
+      color:var(--soft);
+      padding:10px 13px;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:800;
+      transition:.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active{
+      background:rgba(255,255,255,.09);
+      color:#fff;
+    }
+
+    .menu-btn{
+      display:none;
+      width:44px;
+      height:44px;
+      border:1px solid var(--line);
+      border-radius:50%;
+      background:rgba(255,255,255,.08);
+      color:var(--cream);
+      font-size:24px;
+      cursor:pointer;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      border:0;
+      border-radius:999px;
+      padding:15px 22px;
+      font-weight:900;
+      cursor:pointer;
+      transition:.25s ease;
+      white-space:nowrap;
+      font-size:15px;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--gold2),var(--gold),var(--bronze));
+      color:#130c05;
+      box-shadow:0 16px 40px rgba(214,168,79,.22);
+    }
+
+    .btn-glass{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.07);
+      color:var(--cream);
+      backdrop-filter:blur(16px);
+    }
+
+    .btn:hover{transform:translateY(-3px);filter:brightness(1.08)}
+
+    .hero{
+      min-height:100vh;
+      padding-top:150px;
+      display:grid;
+      grid-template-columns:1.02fr .98fr;
+      align-items:center;
+      gap:58px;
+      position:relative;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:9px 14px;
+      background:rgba(255,255,255,.07);
+      color:var(--soft);
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+      backdrop-filter:blur(14px);
+    }
+
+    .badge span{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--gold2);
+      box-shadow:0 0 0 8px rgba(214,168,79,.12);
+    }
+
+    .hero h1{
+      font-size:clamp(48px,8.2vw,106px);
+      margin:24px 0 20px;
+      letter-spacing:-.055em;
+    }
+
+    .gradient{
+      background:linear-gradient(135deg,#fff 10%,var(--gold2),var(--gold),#ffe6b1);
+      -webkit-background-clip:text;
+      color:transparent;
+    }
+
+    .hero p{
+      max-width:620px;
+      font-size:18px;
+    }
+
+    .hero-actions{
+      margin-top:34px;
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .hero-stats{
+      margin-top:42px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      max-width:640px;
+    }
+
+    .stat{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      border-radius:22px;
+      padding:18px;
+    }
+
+    .stat strong{
+      display:block;
+      font-size:25px;
+      color:var(--cream);
+    }
+
+    .stat small{
+      color:var(--muted);
+      font-weight:800;
+    }
+
+    .hero-visual{
+      min-height:620px;
+      position:relative;
+      perspective:1100px;
+    }
+
+    .photo-card{
+      position:absolute;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.17);
+      border-radius:34px;
+      background:#111;
+      box-shadow:var(--shadow);
+    }
+
+    .photo-card img{width:100%;height:100%;object-fit:cover}
+    .photo-card:after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.55));
+      pointer-events:none;
+    }
+
+    .hero-main{
+      right:0;
+      top:10px;
+      width:80%;
+      height:68%;
+      transform:rotateY(-8deg) rotateZ(2deg);
+    }
+
+    .hero-small{
+      left:0;
+      bottom:58px;
+      width:52%;
+      height:34%;
+      transform:rotateZ(-5deg);
+    }
+
+    .floating-booking{
+      position:absolute;
+      z-index:5;
+      right:7%;
+      bottom:0;
+      max-width:310px;
+      padding:24px;
+      border-radius:26px;
+      border:1px solid var(--line);
+      background:rgba(9,8,6,.78);
+      backdrop-filter:blur(20px);
+      box-shadow:var(--shadow);
+    }
+
+    .floating-booking strong{
+      display:block;
+      font-size:21px;
+      margin-bottom:9px;
+      color:#fff;
+    }
+
+    .floating-booking p{font-size:14px}
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:34px;
+      margin-bottom:44px;
+    }
+
+    .section-head h2{
+      font-size:clamp(36px,5vw,66px);
+      max-width:780px;
+      letter-spacing:-.045em;
+    }
+
+    .section-head p{max-width:430px}
+
+    .entrance-wrap,
+    .story-wrap{
+      display:grid;
+      grid-template-columns:.92fr 1.08fr;
+      gap:34px;
+      align-items:center;
+      border:1px solid var(--line);
+      border-radius:40px;
+      padding:34px;
+      background:rgba(255,255,255,.055);
+      box-shadow:0 24px 70px rgba(0,0,0,.24);
+    }
+
+    .entrance-img,
+    .story-img{
+      min-height:540px;
+      border-radius:31px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+
+    .entrance-img img,
+    .story-img img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .content h2{
+      font-size:clamp(36px,5vw,66px);
+      margin:18px 0 20px;
+      letter-spacing:-.045em;
+    }
+
+    .content p{font-size:17px;margin-bottom:18px}
+
+    .feature-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:15px;
+      margin-top:26px;
+    }
+
+    .feature{
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:20px;
+      background:rgba(255,255,255,.055);
+    }
+
+    .feature b{
+      display:block;
+      margin-bottom:8px;
+      color:#fff;
+    }
+
+    .feature span{
+      color:var(--muted);
+      line-height:1.55;
+      font-size:14px;
+    }
+
+    .menu-grid,
+    .room-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.06);
+      overflow:hidden;
+      box-shadow:0 18px 55px rgba(0,0,0,.26);
+      transition:.28s ease;
+    }
+
+    .card:hover{transform:translateY(-8px)}
+    .card-img{height:255px;overflow:hidden}
+    .card-img img{width:100%;height:100%;object-fit:cover;transition:.55s ease}
+    .card:hover .card-img img{transform:scale(1.08)}
+    .card-body{padding:24px}
+    .card-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:start;
+      gap:14px;
+      margin-bottom:12px;
+    }
+    .card h3{font-size:28px}
+    .price{color:var(--gold2);font-weight:900}
+    .tag{
+      display:inline-flex;
+      margin-top:18px;
+      padding:7px 11px;
+      border-radius:999px;
+      color:#ffe9b7;
+      background:rgba(214,168,79,.13);
+      font-size:12px;
+      font-weight:900;
+    }
+
+    .room-grid .card-img{height:305px}
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr .8fr;
+      grid-template-rows:285px 285px;
+      gap:18px;
+    }
+
+    .gallery-item{
+      position:relative;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:29px;
+      box-shadow:0 18px 55px rgba(0,0,0,.28);
+    }
+
+    .gallery-item.large{grid-row:span 2}
+    .gallery-item img{width:100%;height:100%;object-fit:cover;transition:.55s ease}
+    .gallery-item:hover img{transform:scale(1.08)}
+
+    .gallery-label{
+      position:absolute;
+      left:18px;
+      bottom:18px;
+      background:rgba(0,0,0,.52);
+      border:1px solid rgba(255,255,255,.16);
+      backdrop-filter:blur(14px);
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:900;
+      color:#fff;
+    }
+
+    .reservation{
+      display:grid;
+      grid-template-columns:.96fr 1.04fr;
+      gap:30px;
+      align-items:stretch;
+    }
+
+    .panel{
+      border:1px solid var(--line);
+      border-radius:40px;
+      padding:34px;
+      background:rgba(255,255,255,.065);
+      box-shadow:var(--shadow);
+    }
+
+    .panel h2{
+      font-size:clamp(36px,4.8vw,62px);
+      letter-spacing:-.045em;
+      margin:16px 0 16px;
+    }
+
+    .form-grid{
+      margin-top:24px;
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+    }
+
+    .full{grid-column:1/-1}
+
+    input,select,textarea{
+      width:100%;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(0,0,0,.24);
+      color:var(--cream);
+      outline:none;
+      padding:16px;
+      font-family:inherit;
+      font-size:15px;
+    }
+
+    textarea{min-height:120px;resize:vertical}
+    input::placeholder,textarea::placeholder{color:#8c806d}
+    option{color:#111}
+
+    .hours{
+      display:grid;
+      gap:14px;
+      margin-top:28px;
+    }
+
+    .hour{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      border-bottom:1px solid var(--line);
+      padding:15px 0;
+      color:var(--muted);
+    }
+
+    .hour b{color:#fff}
+
+    .contact-wrap{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:28px;
+    }
+
+    .contact-list{
+      display:grid;
+      gap:15px;
+      margin:24px 0 30px;
+    }
+
+    .contact-item{
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:18px;
+      background:rgba(255,255,255,.055);
+    }
+
+    .icon{
+      width:43px;
+      height:43px;
+      border-radius:15px;
+      flex:none;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,var(--gold2),var(--gold),var(--bronze));
+      color:#120b04;
+      font-weight:900;
+    }
+
+    .contact-item b{display:block;margin-bottom:5px}
+    .map{
+      min-height:540px;
+      border-radius:40px;
+      border:1px solid var(--line);
+      overflow:hidden;
+      position:relative;
+      background:
+        linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.56)),
+        url("https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=85") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .map-note{
+      position:absolute;
+      left:24px;
+      right:24px;
+      bottom:24px;
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:rgba(7,6,5,.78);
+      backdrop-filter:blur(18px);
+      padding:22px;
+    }
+
+    .map-note b{
+      display:block;
+      font-size:22px;
+      margin-bottom:8px;
+    }
+
+    .whatsapp-float{
+      position:fixed;
+      right:22px;
+      bottom:22px;
+      width:58px;
+      height:58px;
+      border-radius:50%;
+      z-index:998;
+      display:grid;
+      place-items:center;
+      background:#25d366;
+      color:white;
+      font-weight:900;
+      font-size:25px;
+      box-shadow:0 18px 55px rgba(0,0,0,.38);
+      transition:.25s ease;
+    }
+
+    .whatsapp-float:hover{transform:translateY(-4px) scale(1.04)}
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:34px 6% 46px;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:18px;
+      color:var(--muted);
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(26px);
+      transition:.72s ease;
+    }
+
+    .reveal.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media(max-width:980px){
+      .site-header{
+        top:12px;
+        border-radius:24px;
+        align-items:flex-start;
+        flex-wrap:wrap;
+      }
+
+      .menu-btn{display:grid;place-items:center}
+
+      .nav-links{
+        order:3;
+        width:100%;
+        display:none;
+        flex-direction:column;
+        align-items:stretch;
+        padding-top:12px;
+      }
+
+      .nav-links.open{display:flex}
+
+      .nav-links a{
+        text-align:center;
+        padding:14px;
+        background:rgba(255,255,255,.06);
+      }
+
+      .site-header .btn{display:none}
+
+      .hero,
+      .entrance-wrap,
+      .story-wrap,
+      .reservation,
+      .contact-wrap{
+        grid-template-columns:1fr;
+      }
+
+      .hero{
+        padding-top:140px;
+        gap:36px;
+      }
+
+      .hero-visual{
+        order:-1;
+        min-height:535px;
+      }
+
+      .hero-main{width:84%;height:66%}
+      .hero-small{width:55%;height:32%;bottom:78px}
+
+      .section-head{display:block}
+      .section-head p{margin-top:16px}
+
+      .menu-grid,
+      .room-grid{grid-template-columns:1fr 1fr}
+
+      .gallery-grid{
+        grid-template-columns:1fr 1fr;
+        grid-template-rows:255px 255px 255px;
+      }
+
+      .gallery-item.large{
+        grid-row:span 1;
+        grid-column:span 2;
+      }
+    }
+
+    @media(max-width:640px){
+      section{padding:72px 5%}
+      .brand span:last-child{font-size:12px}
+      .brand-mark{width:38px;height:38px}
+
+      .hero h1{font-size:48px}
+      .hero p{font-size:16px}
+
+      .hero-actions{
+        display:grid;
+        grid-template-columns:1fr;
+      }
+
+      .btn{width:100%}
+
+      .hero-stats{grid-template-columns:1fr}
+
+      .hero-visual{min-height:470px}
+      .hero-main{width:90%;height:60%;top:18px}
+      .hero-small{width:60%;height:30%;bottom:86px}
+      .floating-booking{
+        left:0;
+        right:0;
+        bottom:8px;
+        max-width:none;
+      }
+
+      .entrance-wrap,
+      .story-wrap,
+      .panel{
+        border-radius:29px;
+        padding:22px;
+      }
+
+      .entrance-img,
+      .story-img{
+        min-height:360px;
+      }
+
+      .feature-grid,
+      .menu-grid,
+      .room-grid,
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+
+      .card-img,
+      .room-grid .card-img{height:245px}
+
+      .gallery-grid{
+        display:grid;
+        grid-template-columns:1fr;
+        grid-template-rows:none;
+      }
+
+      .gallery-item,
+      .gallery-item.large{
+        height:260px;
+        grid-column:auto;
+        grid-row:auto;
+      }
+
+      .hour{display:block}
+      .hour span{display:block;margin-top:5px}
+
+      .map{min-height:430px}
+      footer{display:block;text-align:center;line-height:1.8}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <a href="#home" class="brand">
+      <span class="brand-mark">A</span>
+      <span>AURORA HOUSE</span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" class="active">Home</a>
+      <a href="#entrance">Entrance</a>
+      <a href="#menu">Menu</a>
+      <a href="#rooms">Rooms</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#reserve">Reserve</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <a class="btn btn-primary" href="#reserve">Book Now</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+  </header>
+
+  <a class="whatsapp-float" href="https://wa.me/923000000000?text=Hello%20Aurora%20House,%20I%20want%20to%20book%20a%20table%20or%20room" target="_blank" aria-label="WhatsApp">✆</a>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy reveal">
+        <div class="badge"><span></span> Luxury Restaurant & Boutique Stay</div>
+        <h1>Fine dining with a <span class="gradient">hotel-class</span> experience.</h1>
+        <p>
+          AURORA HOUSE is a premium restaurant and boutique stay concept with a luxury entrance, signature dishes, elegant rooms, online booking and a presentation-style layout for clients.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#reserve">Reserve Table / Room →</a>
+          <a class="btn btn-glass" href="#gallery">View Luxury Gallery</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat"><strong>4.9★</strong><small>Guest Rating</small></div>
+          <div class="stat"><strong>35+</strong><small>Premium Dishes</small></div>
+          <div class="stat"><strong>12</strong><small>Luxury Suites</small></div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <!-- CHANGE IMAGE: images/entrance.jpg -->
+        <div class="photo-card hero-main">
+          <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=85" alt="Luxury restaurant interior">
+        </div>
+
+        <!-- CHANGE IMAGE: images/hero-food.jpg -->
+        <div class="photo-card hero-small">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=85" alt="Fine dining table">
+        </div>
+
+        <div class="floating-booking">
+          <strong>Tonight’s Experience</strong>
+          <p>Chef’s table, private lounge, romantic dinner setup and boutique room booking in one premium place.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="entrance">
+      <div class="entrance-wrap reveal">
+        <div class="entrance-img">
+          <!-- CHANGE IMAGE: images/entrance.jpg -->
+          <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=85" alt="Luxury hotel entrance and restaurant lobby">
+        </div>
+
+        <div class="content">
+          <div class="badge"><span></span> Luxury Arrival</div>
+          <h2>A grand entrance that sells the experience first.</h2>
+          <p>
+            This section is perfect for a hotel entrance, luxury restaurant front, reception, lobby or premium welcome area. Replace this image with your real entrance photo.
+          </p>
+          <p>
+            The design is made like a premium presentation, so clients can immediately understand the brand: expensive, modern, trusted and high-class.
+          </p>
+
+          <div class="feature-grid">
+            <div class="feature"><b>Entrance image slot</b><span>Use your own hotel or restaurant front photo.</span></div>
+            <div class="feature"><b>Premium welcome copy</b><span>Creates high-value first impression for visitors.</span></div>
+            <div class="feature"><b>Mobile perfect</b><span>Entrance section stacks cleanly on phone screens.</span></div>
+            <div class="feature"><b>Luxury CTA flow</b><span>Visitor naturally moves to menu, rooms and booking.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="section-head reveal">
+        <h2>Signature menu designed to make visitors hungry.</h2>
+        <p>Premium cards with image slots, dish names, pricing, description and special tags.</p>
+      </div>
+
+      <div class="menu-grid">
+        <article class="card reveal">
+          <div class="card-img">
+            <!-- CHANGE IMAGE: images/food-1.jpg -->
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=85" alt="Grilled steak meal">
+          </div>
+          <div class="card-body">
+            <div class="card-top"><h3>Royal Steak</h3><span class="price">Rs. 3,450</span></div>
+            <p>Charcoal-grilled beef, smoked butter, roasted vegetables and house pepper sauce.</p>
+            <span class="tag">Chef Special</span>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-img">
+            <!-- CHANGE IMAGE: images/food-2.jpg -->
+            <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=900&q=85" alt="Creamy pasta">
+          </div>
+          <div class="card-body">
+            <div class="card-top"><h3>Velvet Pasta</h3><span class="price">Rs. 1,850</span></div>
+            <p>Parmesan cream, roasted mushrooms, basil oil and fresh cracked pepper.</p>
+            <span class="tag">Best Seller</span>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-img">
+            <!-- CHANGE IMAGE: images/food-3.jpg -->
+            <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=900&q=85" alt="Premium food platter">
+          </div>
+          <div class="card-body">
+            <div class="card-top"><h3>Aurora Platter</h3><span class="price">Rs. 2,650</span></div>
+            <p>Seasonal bites, grilled selection, artisan bread, dips and citrus dressing.</p>
+            <span class="tag">Family Favorite</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="rooms">
+      <div class="section-head reveal">
+        <h2>Boutique rooms for a complete luxury addition.</h2>
+        <p>This makes the website more powerful than a normal restaurant site: dining plus stay experience.</p>
+      </div>
+
+      <div class="room-grid">
+        <article class="card reveal">
+          <div class="card-img">
+            <!-- CHANGE IMAGE: images/room.jpg -->
+            <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=900&q=85" alt="Luxury hotel room">
+          </div>
+          <div class="card-body">
+            <div class="card-top"><h3>Classic Suite</h3><span class="price">Rs. 14,500</span></div>
+            <p>Elegant room, premium bedding, warm lights, smart TV and breakfast option.</p>
+            <span class="tag">Couple Stay</span>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-img">
+            <!-- CHANGE IMAGE: images/room-2.jpg -->
+            <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=900&q=85" alt="Premium bedroom interior">
+          </div>
+          <div class="card-body">
+            <div class="card-top"><h3>Executive Room</h3><span class="price">Rs. 18,000</span></div>
+            <p>Premium space for business guests with lounge seating and quiet atmosphere.</p>
+            <span class="tag">Business</span>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-img">
+            <!-- CHANGE IMAGE: images/room-3.jpg -->
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=85" alt="Luxury hotel exterior pool">
+          </div>
+          <div class="card-body">
+            <div class="card-top"><h3>Royal Stay</h3><span class="price">Rs. 24,000</span></div>
+            <p>High-end suite option with dinner setup, private lounge and VIP hospitality.</p>
+            <span class="tag">VIP</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="story">
+      <div class="story-wrap reveal">
+        <div class="story-img">
+          <!-- CHANGE IMAGE: images/chef.jpg -->
+          <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1100&q=85" alt="Chef preparing food">
+        </div>
+
+        <div class="content">
+          <div class="badge"><span></span> Our Story</div>
+          <h2>Created for guests who value taste, comfort and atmosphere.</h2>
+          <p>
+            AURORA HOUSE combines restaurant dining, boutique hospitality and luxury presentation into one modern website.
+          </p>
+          <p>
+            This section can be used for brand story, owner message, chef profile, mission, awards and customer trust.
+          </p>
+
+          <div class="feature-grid">
+            <div class="feature"><b>Chef profile</b><span>Add chef name, experience and specialty cuisine.</span></div>
+            <div class="feature"><b>Awards section</b><span>Add TripAdvisor, Google rating or food awards.</span></div>
+            <div class="feature"><b>Trust building</b><span>Premium story increases booking confidence.</span></div>
+            <div class="feature"><b>Client presentation</b><span>Perfect demo for restaurant/hotel website clients.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="section-head reveal">
+        <h2>Gallery that feels like a luxury portfolio.</h2>
+        <p>Use food, entrance, rooms, lounge, private dining and chef photos here.</p>
+      </div>
+
+      <div class="gallery-grid reveal">
+        <div class="gallery-item large">
+          <!-- CHANGE IMAGE: images/gallery-1.jpg -->
+          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=85" alt="Restaurant dining area">
+          <span class="gallery-label">Dining Lounge</span>
+        </div>
+
+        <div class="gallery-item">
+          <!-- CHANGE IMAGE: images/gallery-2.jpg -->
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=85" alt="Pizza dish">
+          <span class="gallery-label">Fresh Cuisine</span>
+        </div>
+
+        <div class="gallery-item">
+          <!-- CHANGE IMAGE: images/gallery-3.jpg -->
+          <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=85" alt="Burger meal">
+          <span class="gallery-label">Craft Mains</span>
+        </div>
+
+        <div class="gallery-item">
+          <!-- CHANGE IMAGE: images/gallery-4.jpg -->
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&q=85" alt="Healthy food bowl">
+          <span class="gallery-label">Fresh Plates</span>
+        </div>
+
+        <div class="gallery-item">
+          <!-- CHANGE IMAGE: images/interior.jpg -->
+          <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=900&q=85" alt="Restaurant interior">
+          <span class="gallery-label">Luxury Interior</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="reserve">
+      <div class="reservation">
+        <div class="panel reveal">
+          <div class="badge"><span></span> Booking Form</div>
+          <h2>Reserve your table or room.</h2>
+          <p>
+            This form opens WhatsApp with all booking details. Change the WhatsApp number in the script and links.
+          </p>
+
+          <form class="form-grid" onsubmit="sendBooking(event)">
+            <input id="guestName" type="text" placeholder="Your name" required>
+            <input id="guestPhone" type="tel" placeholder="Phone / WhatsApp" required>
+
+            <select id="bookingType" required>
+              <option value="">Booking type</option>
+              <option>Restaurant Table</option>
+              <option>Hotel Room</option>
+              <option>Private Dinner</option>
+              <option>Family Event</option>
+            </select>
+
+            <select id="guestCount" required>
+              <option value="">Guests</option>
+              <option>2 Guests</option>
+              <option>4 Guests</option>
+              <option>6 Guests</option>
+              <option>8+ Guests</option>
+            </select>
+
+            <input id="bookingDate" type="date" required>
+
+            <select id="bookingTime" required>
+              <option value="">Select time</option>
+              <option>1:00 PM</option>
+              <option>3:00 PM</option>
+              <option>6:00 PM</option>
+              <option>8:00 PM</option>
+              <option>10:00 PM</option>
+            </select>
+
+            <textarea id="guestNote" class="full" placeholder="Special request / birthday / room preference / seating preference"></textarea>
+
+            <button class="btn btn-primary full" type="submit">Send Booking on WhatsApp</button>
+          </form>
+        </div>
+
+        <div class="panel reveal">
+          <div class="badge"><span></span> Opening Hours</div>
+          <h2>Open for dining and stay.</h2>
+          <p>Replace these timings with real business hours.</p>
+
+          <div class="hours">
+            <div class="hour"><b>Monday – Thursday</b><span>1:00 PM – 11:30 PM</span></div>
+            <div class="hour"><b>Friday</b><span>2:00 PM – 12:30 AM</span></div>
+            <div class="hour"><b>Saturday</b><span>12:00 PM – 12:30 AM</span></div>
+            <div class="hour"><b>Sunday</b><span>12:00 PM – 11:00 PM</span></div>
+            <div class="hour"><b>Room Check-in</b><span>2:00 PM onwards</span></div>
+          </div>
+
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px">
+            <a class="btn btn-glass" href="#menu">See Menu</a>
+            <a class="btn btn-glass" href="#rooms">View Rooms</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact-wrap">
+        <div class="panel reveal">
+          <div class="badge"><span></span> Contact</div>
+          <h2>Visit Aurora House.</h2>
+          <p>Replace these demo details with real restaurant/hotel information.</p>
+
+          <div class="contact-list">
+            <div class="contact-item">
+              <span class="icon">☎</span>
+              <div><b>Phone</b><p>+92 300 0000000</p></div>
+            </div>
+            <div class="contact-item">
+              <span class="icon">✉</span>
+              <div><b>Email</b><p>hello@aurorahouse.com</p></div>
+            </div>
+            <div class="contact-item">
+              <span class="icon">⌖</span>
+              <div><b>Address</b><p>Clifton, Karachi, Pakistan</p></div>
+            </div>
+          </div>
+
+          <a class="btn btn-primary" href="https://wa.me/923000000000?text=Hello%20Aurora%20House,%20I%20want%20details" target="_blank">WhatsApp Now</a>
+        </div>
+
+        <div class="map reveal">
+          <div class="map-note">
+            <b>Map / Location Image</b>
+            <p>Later you can replace this with a real Google Maps embed or location image.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© 2026 AURORA HOUSE. Luxury restaurant & boutique stay demo.</div>
+    <div>Mobile-first • Laptop-ready • GitHub Pages ready</div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+    const navItems = document.querySelectorAll(".nav-links a");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+      menuBtn.textContent = navLinks.classList.contains("open") ? "×" : "☰";
+    });
+
+    navItems.forEach(item => {
+      item.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuBtn.textContent = "☰";
+      });
+    });
+
+    const sections = document.querySelectorAll("main section");
+
+    window.addEventListener("scroll", () => {
+      let current = "home";
+      sections.forEach(section => {
+        const top = section.offsetTop - 170;
+        if (window.scrollY >= top) current = section.id;
+      });
+
+      navItems.forEach(item => {
+        item.classList.toggle("active", item.getAttribute("href") === "#" + current);
+      });
+    });
+
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+
+    function sendBooking(event){
+      event.preventDefault();
+
+      const name = document.getElementById("guestName").value.trim();
+      const phone = document.getElementById("guestPhone").value.trim();
+      const type = document.getElementById("bookingType").value;
+      const guests = document.getElementById("guestCount").value;
+      const date = document.getElementById("bookingDate").value;
+      const time = document.getElementById("bookingTime").value;
+      const note = document.getElementById("guestNote").value.trim();
+
+      const whatsappNumber = "923000000000";
+
+      const message =
+        `Hello Aurora House, I want to make a booking.%0A%0A` +
+        `Name: ${encodeURIComponent(name)}%0A` +
+        `Phone: ${encodeURIComponent(phone)}%0A` +
+        `Booking Type: ${encodeURIComponent(type)}%0A` +
+        `Guests: ${encodeURIComponent(guests)}%0A` +
+        `Date: ${encodeURIComponent(date)}%0A` +
+        `Time: ${encodeURIComponent(time)}%0A` +
+        `Note: ${encodeURIComponent(note || "No special request")}`;
+
+      window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
+    }
+  </script>
+</body>
+</html>
